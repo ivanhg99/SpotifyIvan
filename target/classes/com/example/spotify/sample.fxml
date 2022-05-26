@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="raiz" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="750.0" prefWidth="990.0" styleClass="color-fondo" stylesheets="@../../../CSS/estilo.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.spotify.Controller">
+   <top>
+      <Pane prefHeight="59.0" prefWidth="990.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="buscar" layoutX="263.0" layoutY="17.0" onKeyPressed="#intro" promptText="Buscar" styleClass="buscar" stylesheets="@../../../CSS/estilo.css" />
+            <ImageView fitHeight="35.0" fitWidth="33.0" layoutX="226.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ic_search.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="premium" layoutX="629.0" layoutY="17.0" mnemonicParsing="false" onAction="#premium" styleClass="premium" stylesheets="@../../../CSS/estilo.css" text="Premium" />
+            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="714.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/user.png" />
+               </image>
+            </ImageView>
+            <ComboBox fx:id="ajustes" layoutX="851.0" layoutY="18.0" onAction="#ajustescombo" opacity="0.0" prefHeight="26.0" prefWidth="127.0" style="-fx-background-color: transparent;" />
+            <Label fx:id="nombre_usuario" layoutX="775.0" layoutY="20.0" prefHeight="16.0" prefWidth="159.0" text="Usuario Desconocido" />
+            <ImageView fx:id="ajustes1" fitHeight="37.0" fitWidth="37.0" layoutX="922.0" layoutY="19.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../Imagenes/pngegg.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ajustes2" fitHeight="6.0" fitWidth="12.0" layoutX="955.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">
+               <image>
+                  <Image url="@../../../Imagenes/pe.png" />
+               </image>
+            </ImageView>
+            <VBox layoutX="-1.0" layoutY="-1.0" prefHeight="71.0" prefWidth="227.0" styleClass="color-izquierda">
+               <children>
+                  <ImageView fitHeight="92.0" fitWidth="40.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Imagenes/ic_more.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </top>
+   <bottom>
+      <Pane prefHeight="83.0" prefWidth="990.0" styleClass="barra_abajo" stylesheets="@../../../CSS/estilo.css" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="foto_cancion" fitHeight="64.0" fitWidth="60.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/user.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="nombre_cancionrep" layoutX="82.0" layoutY="14.0" prefHeight="16.0" prefWidth="128.0" text="Nombre Cancion" textFill="WHITE" />
+            <Label fx:id="nombre_artista" layoutX="84.0" layoutY="42.0" prefHeight="16.0" prefWidth="123.0" text="Artista" textFill="WHITE" />
+            <ImageView fx:id="corazon" fitHeight="40.0" fitWidth="44.0" layoutX="210.0" layoutY="22.0" onMouseClicked="#corazon" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../Imagenes/ic_love.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="aleatorio" fitHeight="29.0" fitWidth="31.0" layoutX="496.0" layoutY="17.0" onMouseClicked="#aleatorio" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ic_shuffle.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="repetir" fitHeight="29.0" fitWidth="31.0" layoutX="652.0" layoutY="16.0" onMouseClicked="#repetir" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ic_repeat.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="adelante" fitHeight="29.0" fitWidth="31.0" layoutX="613.0" layoutY="16.0" onMouseClicked="#adelante" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ic_end.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="play" fitHeight="29.0" fitWidth="31.0" layoutX="576.0" layoutY="17.0" onMouseClicked="#play" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ic_play.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="atras" fitHeight="29.0" fitWidth="31.0" layoutX="535.0" layoutY="16.0" onMouseClicked="#atras" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ic_skip_to_start.png" />
+               </image>
+            </ImageView>
+            <Slider layoutX="346.0" layoutY="54.0" prefHeight="15.0" prefWidth="486.0" />
+            <Button fx:id="iniciar_sesion" layoutX="863.0" layoutY="29.0" mnemonicParsing="false" onAction="#iniciar_sesion" styleClass="premium" stylesheets="@../../../CSS/estilo.css" text="Iniciar Sesion" />
+         </children>
+      </Pane>
+   </bottom>
+   <center>
+      <Pane focusTraversable="true" prefHeight="608.0" prefWidth="738.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutY="-6.0" prefHeight="611.0" prefWidth="765.0">
+               <children>
+                  <ScrollPane fx:id="scroll" prefHeight="617.0" prefWidth="766.0" style="-fx-background-color: transparent;">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1500.0" prefWidth="1000.0" styleClass="color-fondo">
+                           <children>
+                              <Pane layoutX="-1.0" layoutY="1.0" prefHeight="300.0" prefWidth="1000.0">
+                                 <children>
+                                    <Text layoutX="8.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hechas para ti" />
+                                    <ImageView fx:id="icancion1" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="15.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="icancion2" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="258.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="icancion3" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="510.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="icancion4" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="765.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="cancion1" layoutX="105.0" layoutY="253.0" text="SAOKO" />
+                                    <Label fx:id="cancion4" layoutX="857.0" layoutY="252.0" text="Nominao" />
+                                    <Label fx:id="cancion3" layoutX="607.0" layoutY="253.0" text="Bio" />
+                                    <Label fx:id="cancion2" layoutX="330.0" layoutY="253.0" text="Los Lugares" />
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="7.0" layoutY="300.0" prefHeight="300.0" prefWidth="1000.0">
+                                 <children>
+                                    <Text layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escuchadas recientemente" />
+                                    <ImageView fx:id="icancion5" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="15.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="icancion6" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="255.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="icancion7" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="510.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="icancion8" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="765.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="cancion5" layoutX="96.0" layoutY="253.0" text="Las Dudas" />
+                                    <Label fx:id="cancion8" layoutX="857.0" layoutY="253.0" text="Verde" />
+                                    <Label fx:id="cancion7" layoutX="606.0" layoutY="253.0" text="Suerte" />
+                                    <Label fx:id="cancion6" layoutX="342.0" layoutY="253.0" text="SAOKO" />
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="7.0" layoutY="600.0" prefHeight="300.0" prefWidth="1000.0">
+                                 <children>
+                                    <Text layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Albumes" />
+                                    <ImageView fx:id="al_motomami" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="15.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="al_malquerer" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="255.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="al_madrile" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="510.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="al_avida" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="765.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="album1" layoutX="95.0" layoutY="253.0" text="MOTOMAMI" />
+                                    <Label fx:id="album2" layoutX="330.0" layoutY="253.0" text="El Mal Querer" />
+                                    <Label fx:id="album3" layoutX="585.0" layoutY="253.0" text="El Madrileño" />
+                                    <Label fx:id="album4" layoutX="845.0" layoutY="253.0" text="Avida Dollars" />
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="7.0" layoutY="900.0" prefHeight="300.0" prefWidth="1000.0">
+                                 <children>
+                                    <Text layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artistas" />
+                                    <ImageView fx:id="a_rosalia" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="15.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="a_tangana" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="255.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="a_elche" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="510.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="a_hungara" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="765.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="artista1" layoutX="105.0" layoutY="253.0" text="ROSALIA" />
+                                    <Label fx:id="artista2" layoutX="335.0" layoutY="253.0" text="C. Tangana" />
+                                    <Label fx:id="artista3" layoutX="590.0" layoutY="253.0" text="Bad Bunny" />
+                                    <Label fx:id="artista4" layoutX="850.0" layoutY="253.0" text="Maluma" />
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="7.0" layoutY="1200.0" prefHeight="300.0" prefWidth="1000.0">
+                                 <children>
+                                    <Text layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Podscast" />
+                                    <ImageView fx:id="p_wild" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="15.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="p_estirando" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="255.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="p_dentri" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="510.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="p_cuarto" fitHeight="221.0" fitWidth="225.0" focusTraversable="true" layoutX="765.0" layoutY="40.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/ic_end.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="podcast1" layoutX="90.0" layoutY="253.0" text="The Wild Project" />
+                                    <Label fx:id="podcast2" layoutX="325.0" layoutY="253.0" text="Estirando el chicle" />
+                                    <Label fx:id="podcast3" layoutX="585.0" layoutY="253.0" text="Dentrisimo" />
+                                    <Label fx:id="podcast4" layoutX="840.0" layoutY="253.0" text="Cuarto milenial" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="panel_explorar" layoutY="-7.0" prefHeight="616.0" prefWidth="764.0" styleClass="color-fondo" visible="false">
+               <children>
+                  <Text layoutX="29.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Explorar" wrappingWidth="158.7294921875">
+                     <font>
+                        <Font name="DejaVu Sans Condensed Bold" size="30.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="20.0" layoutY="90.0" mnemonicParsing="false" onAction="#Generos" style="-fx-background-color: transparent;" text="Generos Y Estados De Animo">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="288.0" layoutY="90.0" mnemonicParsing="false" onAction="#Podcast_explorar" style="-fx-background-color: transparent;" text="Podcast">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="400.0" layoutY="90.0" mnemonicParsing="false" onAction="#Exitos" style="-fx-background-color: transparent;" text="Lista De Exitos">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="572.0" layoutY="90.0" mnemonicParsing="false" onAction="#Novedades" style="-fx-background-color: transparent;" text="Novedades">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Pane fx:id="sponsor" layoutY="136.0" prefHeight="200.0" prefWidth="765.0">
+                     <children>
+                        <Text layoutX="356.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sponsor" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="panel_generos" layoutY="336.0" prefHeight="288.0" prefWidth="764.0" visible="false">
+                     <children>
+                        <Text layoutX="33.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Generos del momento" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="panel_podcast" layoutX="1.0" layoutY="336.0" prefHeight="288.0" prefWidth="764.0" visible="false">
+                     <children>
+                        <Text layoutX="33.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Podcast del momento" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="panel_exitos" layoutX="2.0" layoutY="337.0" prefHeight="288.0" prefWidth="764.0" visible="false">
+                     <children>
+                        <Text layoutX="33.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exitos del momento" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="panel_novedades" layoutX="3.0" layoutY="337.0" prefHeight="288.0" prefWidth="764.0" visible="false">
+                     <children>
+                        <Text layoutX="33.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Novedades" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="panel_amigo" layoutY="-7.0" prefHeight="618.0" prefWidth="764.0" styleClass="color-fondo" visible="false">
+               <children>
+                  <Text layoutX="171.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar Usuario:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="buscador_usuario" layoutX="357.0" layoutY="64.0" onKeyPressed="#intro_amigo" styleClass="buscar" />
+                  <Label fx:id="texto_usuario" layoutX="351.0" layoutY="151.0" text="Usuario no encontrado" visible="false" />
+                  <ImageView fx:id="foto_usuario_amigo" fitHeight="46.0" fitWidth="46.0" layoutX="292.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../../../Imagenes/user.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="seguir" layoutX="315.0" layoutY="192.0" mnemonicParsing="false" onAction="#seguir" styleClass="boton_premium" text="Seguir" visible="false">
+                     <font>
+                        <Font name="Dyuthi Regular" size="20.0" />
+                     </font></Button>
+                  <ImageView fitHeight="239.0" fitWidth="391.0" layoutX="373.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Imagenes/la-publicidad-en-Spotify-y-como-te-puede-beneficiar.jpg" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="tabla_sigue_usuario" layoutX="43.0" layoutY="319.0" prefHeight="235.0" prefWidth="257.0">
+                    <columns>
+                      <TableColumn fx:id="columna_user" prefWidth="75.0" text="Nombre Usuario" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Button layoutX="109.0" layoutY="570.0" mnemonicParsing="false" onAction="#dejar_de_seguir" styleClass="premium" text="Dejar De Seguir" />
+                  <Button layoutX="78.0" layoutY="283.0" mnemonicParsing="false" onAction="#actualiza" style="-fx-background-color: Transparent;" text="Usuarios a los que sigues:" />
+               </children>
+            </Pane>
+            <Pane fx:id="idiomas" layoutX="1.0" layoutY="-9.0" prefHeight="618.0" prefWidth="764.0" styleClass="color-fondo" visible="false">
+               <children>
+                  <Text layoutX="88.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecciona un idioma">
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="50.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="335.0" layoutY="160.0" mnemonicParsing="false" onAction="#ingles" style="-fx-background-color: transparent;" styleClass="premium" text="Ingles">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="333.0" layoutY="360.0" mnemonicParsing="false" onAction="#espaniol" style="-fx-background-color: transparent;" styleClass="premium" text="Español">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="333.0" layoutY="310.0" mnemonicParsing="false" onAction="#aleman" style="-fx-background-color: transparent;" styleClass="premium" text="Aleman">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="333.0" layoutY="260.0" mnemonicParsing="false" onAction="#italiano" style="-fx-background-color: transparent;" styleClass="premium" text="Italiano">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="330.0" layoutY="210.0" mnemonicParsing="false" onAction="#frances" style="-fx-background-color: transparent;" styleClass="premium" text="Frances">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Text layoutX="165.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tu idioma predeterminado es el :" />
+                  <Text fx:id="idioma_pre" layoutX="408.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="panel_playlist" layoutY="-5.0" prefHeight="618.0" prefWidth="764.0" styleClass="color-fondo" visible="false">
+               <children>
+                  <Text layoutX="278.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Playlist">
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="50.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="191.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Como quieres que se llame:" />
+                  <TextField fx:id="titulo_playlist" layoutX="398.0" layoutY="288.0" styleClass="premium" />
+                  <Button fx:id="crear_playlist" layoutX="355.0" layoutY="384.0" mnemonicParsing="false" onAction="#crear_playlistt" styleClass="premium" text="Crear" />
+               </children>
+            </Pane>
+            <Pane fx:id="panel_playlist_cancion" layoutY="-5.0" prefHeight="618.0" prefWidth="764.0" styleClass="color-fondo" visible="false">
+               <children>
+                  <Text layoutX="278.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Playlist">
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="50.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="187.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Que cancion desea buscar:" />
+                  <Text fx:id="idioma_pre11" layoutX="408.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                  <TextField fx:id="cancion_para_playlist" layoutX="400.0" layoutY="136.0" onKeyPressed="#buscar_cancion" styleClass="premium" />
+                  <Button fx:id="anade_playlist" layoutX="309.0" layoutY="204.0" mnemonicParsing="false" onAction="#anade_playlist" styleClass="premium" text="Añadir" visible="false" />
+                  <Label fx:id="nombre_cancion" layoutX="382.0" layoutY="209.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="panel_albumes" layoutY="-9.0" prefHeight="618.0" prefWidth="764.0" styleClass="color-fondo" visible="false">
+               <children>
+                  <Text fx:id="titulo_album" layoutX="28.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="titulo album">
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="50.0" />
+                     </font>
+                  </Text>
+                  <TableView fx:id="tabla_album" layoutX="28.0" layoutY="103.0" prefHeight="469.0" prefWidth="710.0">
+                    <columns>
+                      <TableColumn fx:id="columna_can" prefWidth="152.0" text="Nombre Cancion" />
+                      <TableColumn fx:id="numero_rep" prefWidth="121.0" text="Numero Reproducciones" />
+                        <TableColumn fx:id="columna_dur" prefWidth="470.0" text="Duracion" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane fx:id="panel_artistas" layoutX="1.0" layoutY="-9.0" prefHeight="618.0" prefWidth="764.0" styleClass="color-fondo" visible="false">
+               <children>
+                  <Text fx:id="titulo_artista" layoutX="28.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="artista">
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="50.0" />
+                     </font>
+                  </Text>
+                  <TableView fx:id="tabla_artista" layoutX="28.0" layoutY="103.0" prefHeight="469.0" prefWidth="710.0">
+                     <columns>
+                        <TableColumn fx:id="columna_nombreal" prefWidth="152.0" text="Nombre Album" />
+                        <TableColumn fx:id="columna_anio" prefWidth="121.0" text="Año" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Button layoutX="219.0" layoutY="581.0" mnemonicParsing="false" onAction="#entrar_album" text="Entrar en album" />
+                  <Button layoutX="383.0" layoutY="581.0" mnemonicParsing="false" onAction="#todo_artistas" text="Ver Todos Los Artistas" />
+               </children>
+            </Pane>
+            <Pane fx:id="panel_podcastc" layoutX="1.0" layoutY="-9.0" prefHeight="618.0" prefWidth="764.0" styleClass="color-fondo" visible="false">
+               <children>
+                  <Text fx:id="titulo_podcast" layoutX="28.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="podcast">
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="50.0" />
+                     </font>
+                  </Text>
+                  <TableView fx:id="tabla_podcast" layoutX="28.0" layoutY="103.0" prefHeight="469.0" prefWidth="710.0">
+                     <columns>
+                        <TableColumn fx:id="columna_titulop" prefWidth="152.0" text="Capitulo" />
+                        <TableColumn fx:id="columna_desc" prefWidth="121.0" text="Descripcion" />
+                        <TableColumn fx:id="columna_fecha" prefWidth="121.0" text="Fecha" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Button fx:id="boton_podcast_gust" layoutX="137.0" layoutY="578.0" mnemonicParsing="false" onAction="#ver_podcast_sigo" styleClass="premium" text="Ver Podcast A Los Que Sigo" visible="false" />
+                  <Button layoutX="436.0" layoutY="578.0" mnemonicParsing="false" onAction="#todo_podcast" styleClass="premium" text="Ver Todos Los Podcast" />
+                  <Button fx:id="boton_seguir_podcast" layoutX="352.0" layoutY="578.0" mnemonicParsing="false" onAction="#seguir_podcast" styleClass="premium" text="Seguir" visible="false" />
+               </children>
+            </Pane>
+            <Pane fx:id="panel_artistasforever" layoutX="1.0" layoutY="-9.0" prefHeight="618.0" prefWidth="764.0" styleClass="color-fondo" visible="false">
+               <children>
+                  <Text fx:id="titulo_artista1" layoutX="28.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Todos Los Artistas">
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="50.0" />
+                     </font>
+                  </Text>
+                  <TableView fx:id="tabla_artistaas" layoutX="28.0" layoutY="103.0" prefHeight="469.0" prefWidth="710.0">
+                     <columns>
+                        <TableColumn fx:id="columna_allartista" prefWidth="152.0" text="Nombre Artista" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Button layoutX="352.0" layoutY="579.0" mnemonicParsing="false" onAction="#entrar_artista" text="Entrar" />
+               </children>
+            </Pane>
+            <Pane fx:id="panel_canciongusta" layoutX="1.0" layoutY="-9.0" prefHeight="618.0" prefWidth="764.0" styleClass="color-fondo" visible="false">
+               <children>
+                  <Text fx:id="titulo_artista11" layoutX="28.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Canciones que te gustan">
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="50.0" />
+                     </font>
+                  </Text>
+                  <TableView fx:id="tabla_cancionnesgustar" layoutX="28.0" layoutY="103.0" prefHeight="469.0" prefWidth="710.0">
+                     <columns>
+                        <TableColumn fx:id="columna_cancionnom" prefWidth="152.0" text="Nombre Cancion" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane fx:id="panel_sigue_art" layoutX="1.0" layoutY="-9.0" prefHeight="618.0" prefWidth="764.0" styleClass="color-fondo" visible="false">
+               <children>
+                  <Text layoutX="171.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar Artista:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="buscador_artista" layoutX="357.0" layoutY="64.0" onKeyPressed="#intro_artista" styleClass="buscar" />
+                  <Label fx:id="texto_artista_si" layoutX="351.0" layoutY="151.0" text="Artista no encontrado" visible="false" />
+                  <ImageView fx:id="foto_usuario_artista" fitHeight="46.0" fitWidth="46.0" layoutX="292.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../../../Imagenes/user.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="seguir_art" layoutX="315.0" layoutY="192.0" mnemonicParsing="false" onAction="#seguir_art" styleClass="boton_premium" text="Seguir" visible="false">
+                     <font>
+                        <Font name="Dyuthi Regular" size="20.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="239.0" fitWidth="391.0" layoutX="373.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Imagenes/la-publicidad-en-Spotify-y-como-te-puede-beneficiar.jpg" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="tabla_sigue_artista" layoutX="43.0" layoutY="319.0" prefHeight="235.0" prefWidth="257.0">
+                     <columns>
+                        <TableColumn fx:id="columna_art_si" prefWidth="75.0" text="Nombre Artista" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Button layoutX="109.0" layoutY="570.0" mnemonicParsing="false" onAction="#dejar_de_seguir_art" styleClass="premium" text="Dejar De Seguir" />
+                  <Button layoutX="78.0" layoutY="283.0" mnemonicParsing="false" onAction="#actualiza_art" style="-fx-background-color: Transparent;" text="Artistas a los que sigues:" />
+               </children>
+            </Pane>
+            <Pane fx:id="panel_podcastodo" layoutX="1.0" layoutY="-9.0" prefHeight="618.0" prefWidth="764.0" styleClass="color-fondo" visible="false">
+               <children>
+                  <Text fx:id="titulo_podcast1" layoutX="28.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Todos Los Podcast">
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="50.0" />
+                     </font>
+                  </Text>
+                  <TableView fx:id="tabla_todo_podcast" layoutX="28.0" layoutY="103.0" onMouseClicked="#clicktablapodcast" prefHeight="469.0" prefWidth="710.0">
+                     <columns>
+                        <TableColumn fx:id="columna_titulopodcasttodo" prefWidth="152.0" text="Titulo" />
+                        <TableColumn fx:id="columna_desc_podcasttodo" prefWidth="121.0" text="Descripcion" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane fx:id="panel_podcastsigue" layoutX="1.0" layoutY="-9.0" prefHeight="618.0" prefWidth="764.0" styleClass="color-fondo" visible="false">
+               <children>
+                  <Text fx:id="titulo_podcast11" layoutX="28.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Podcast Que Sigues">
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="50.0" />
+                     </font>
+                  </Text>
+                  <TableView fx:id="tabla_podcast_sigue" layoutX="28.0" layoutY="103.0" prefHeight="469.0" prefWidth="710.0">
+                     <columns>
+                        <TableColumn fx:id="columna_titulopodcastsigue" prefWidth="152.0" text="Titulo" />
+                        <TableColumn fx:id="columna_desc_podcastsigue" prefWidth="121.0" text="Descripcion" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Button layoutX="322.0" layoutY="578.0" mnemonicParsing="false" onAction="#dejar_de_seguir_podcast" text="Dejar De Seguir" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </center>
+   <left>
+      <VBox prefHeight="642.0" prefWidth="226.0" styleClass="color-izquierda" stylesheets="@../../../CSS/estilo.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="casa" onMouseClicked="#click" onMouseEntered="#raton_se_mueve" onMouseExited="#raton_se_va" prefHeight="0.0" prefWidth="226.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Imagenes/ic_home.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label mouseTransparent="true" prefHeight="40.0" prefWidth="40.0" text="Inicio" textFill="#f8f8f8">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="explora" onMouseClicked="#click" onMouseEntered="#raton_se_mueve" onMouseExited="#raton_se_va" prefHeight="6.0" prefWidth="226.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Imagenes/ic_browse.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label mouseTransparent="true" prefHeight="31.0" prefWidth="63.0" text="Explorar" textFill="#f8f8f8">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="radio" onMouseClicked="#click" onMouseEntered="#raton_se_mueve" onMouseExited="#raton_se_va" prefHeight="0.0" prefWidth="226.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Imagenes/ic_radio.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label mouseTransparent="true" prefHeight="50.0" prefWidth="43.0" text="Radio" textFill="#f8f8f8">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="TU LIBRERIA" textFill="#797878">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox fx:id="hechas_para_ti" onMouseClicked="#click" onMouseEntered="#raton_se_mueve" onMouseExited="#raton_se_va" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label mouseTransparent="true" text="Hechas para ti" textFill="#f8f7f7">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="8.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="escuchadas_recientemente" onMouseClicked="#click" onMouseEntered="#raton_se_mueve" onMouseExited="#raton_se_va" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label mouseTransparent="true" text="Escuchadas recientemente" textFill="#f8f7f7">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="8.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="canciones_que_te_gustan" onMouseClicked="#click" onMouseEntered="#raton_se_mueve" onMouseExited="#raton_se_va" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label mouseTransparent="true" text="Canciones que te gustan" textFill="#f8f7f7">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="8.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="albumes" onMouseClicked="#click" onMouseEntered="#raton_se_mueve" onMouseExited="#raton_se_va" prefHeight="0.0" prefWidth="226.0">
+                     <children>
+                        <Label mouseTransparent="true" text="Albumes" textFill="#f8f7f7">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="8.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="artistas" onMouseClicked="#click" onMouseEntered="#raton_se_mueve" onMouseExited="#raton_se_va" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label mouseTransparent="true" text="Artistas" textFill="#f8f7f7">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="8.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="podcast" onMouseClicked="#click" onMouseEntered="#raton_se_mueve" onMouseExited="#raton_se_va" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label mouseTransparent="true" text="Podscast" textFill="#f8f7f7">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="8.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="nombre_playlist6" prefHeight="221.0" prefWidth="226.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#botonparaplaylist" prefHeight="33.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Playlist" textFill="#808080">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Pane fx:id="panel_playlistn" prefHeight="200.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <TableView id="tabla_nombres_playlist" fx:id="tabla_nombres_playlist" onMouseClicked="#clicktabla" prefHeight="147.0" prefWidth="225.0">
+                          <columns>
+                            <TableColumn fx:id="columna_playnom" prefWidth="75.0" text="Nombre Playlist" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <Button layoutX="49.0" layoutY="152.0" mnemonicParsing="false" onAction="#dejar_de_seguir_playlist" text="Dejar De Seguir" />
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <HBox fx:id="playlist" onMouseClicked="#click" onMouseEntered="#raton_se_mueve" onMouseExited="#raton_se_va" prefHeight="48.0" prefWidth="226.0" visible="false">
+               <children>
+                  <ImageView fitHeight="67.0" fitWidth="45.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Imagenes/ic_add.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label mouseTransparent="true" text="Nueva Playlist" textFill="#f8f7f7">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" top="12.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
